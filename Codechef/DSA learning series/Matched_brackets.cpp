@@ -31,39 +31,30 @@ ll count = 0;
  stk.clear();
  ll ind=0;
  
- list<int> stko;
+ list<pair<int,int> > stko;
 while(i<n)
- {
-if(ch[i]==1)
-{ 
- if(flag)
- {ind = i+1;
- flag = 0;
-  }
-  stko.push_back(ch[i]);
- 
+ { 
+ if(ch[i]==1)
+{ ++count;
+ stko.push_back(make_pair(ch[i],i+1));
 }
 else
-{
-stko.pop_back();
-if(stko.size()==0)
-{flag =1;
-if(max_len<count)
-{    max_len = count;
-    ml_f_pos = ind;
+{ ++count;
+    if(stko.size()==1)
+    { ind = stko.front().second;
+      if(count>max_len)
+       {max_len = count;
+       ml_f_pos = ind;
+       }
+       count = 0;
+    } 
+    stko.pop_back();
 }
-count = 0;
-}
-}
- ++count;
 ++i;
-
  }
- if(max_len%2!=0)
- max_len += 1;
- 
  
  printf("%d %d %d %d",n_depth,f_pos,max_len,ml_f_pos);
+
     return 0;
 }
 
