@@ -2,7 +2,7 @@
 using namespace std;
 
 
-
+# find the gcd for a and b
 
 int gcd(int a,int b)
 { 
